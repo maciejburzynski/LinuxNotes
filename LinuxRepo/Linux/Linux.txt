@@ -1,0 +1,177 @@
+Powłoka - pośrednik między jądrem, a użytkownikiem
+
+Polecenia: 
+- rozpoznają wielkość liter
+
+-man - otwiera podręcznik pomocniczy
+man man - można podać jako argument poszukiwaną frazę - w tym przypadku podręcznik otwrzy info o samym sobie
+
+sudo - uprawnienia adminowe - przed komendami "tymczasowe", na czas trwania 
+sudo su - uprawnienia adminowe - "długotrwałe"
+
+shutdown -h now - zamyka system w trybie natychmiastowym. W tym przypadku należy poprzednić sudo, jako uprawnienia administratorskie
+shutdown -h +1 - zamyka system za minutę
+ctrl + c - przerywa proces zamykania 
+shutdown -r - reboot
+
+halt - zamyka system bez pytania o zgodę, bez brania niczego pod uwagę. Shutdown robi delikatniej
+
+top - Wyświetlanie procesów - PID - process idenyfikator, wyjście z programu kliknięcie q, user - użytkownik uruchamiający proces, command - nazwa poszczególnych procesów, służy do sprawdzenie użycia procesora 
+
+ps - procesu uruchomione przez osobe zalogowaną
+ps -aux - wszystkie procesy 
+ps -u - okrojone rozszerzenie 
+ps --forest - hierarchia uruchmionych procesów
+
+kill 2122 - zabija proces o numerze PID 2122
+kill -9 2122 - zabija proces bezwzględnie o numerze PID 2122
+ 
+
+date - pokazuje bieżącą datę
+date +%H - pokazuje bieżącą godzinę z godziny format 24H
+date +%I - pokazuje bieżącą godzinę z godziny format 12H
+date +%I+%M - pokazuje godzine w formacie 12H + minuty
+
+sudo adduser gosc - dodaje uzytkownika o nazwie gosc
+sudo deluser gosc --remove-home - usuwa uzytkownika łącznie z plikami 
+
+sudo addgroup domownicy - dodaje grupe o nazwie domownicy 
+sudo delgroup domownicy - usuwa grupe o nazwie domownicy 
+sudo delgroup -only-if-empty domownicy - usuwa grupe o nazwie domownicy jesli jest pusta
+
+who - sprawdza kto jest zalogowany 
+
+mesg - sprawdza czy funkcja wiadomosci jest włączona
+mesg y - ustawia mesg na włączone
+mesg n - ustawia mesg na wyłączone
+
+passwd - zmiana hasla zalogowanego usera
+sudo passwd test - zmiana hasla dla konta test 
+sudo passwd test -e - zmiana hasla dla konta test przy najblizszym logowaniu uzytkownika
+finger maciej - sprawdza dane użytkownika maciej
+
+echo "chuj" | wall - wysyla zbiorowy komunikat o treści: chuj - co wazne mesg muszą być włączone
+
+su maciej - praca na uzytkowniku maciej bez logowania go
+sudo login maciej - logowanie sie na uzytkowniku maciej 
+
+alias czas='date' - korzystanie z komendy czas zamiast komendy date - przypisanie jej
+unalias -a - usuwanie aliasow - resetowanie ich 	
+exit - wyjscie z konta/wylogowanie
+df - info na temat używalności dysku 
+df -h - bardziej czytelna forma
+df -T - bardziej czytelna forma z typem danych
+
+ls - pokazywanie zawartosci katalogu 
+ls - a - pokazywanie tez tych ukrytych katalogów
+ls Desktop - zawartość desktopu
+ls -l - pokazywanie zawartosci w formie listy 
+ls -a -l - to samo + katalogi ukryte
+
+file linux.txt - sprawdza typ pliku i zwraca info 
+
+cd .. - cofanie sie do katalogu wyżej 
+cd ../.. - dofnięcie się o 2 katalogi 
+
+mv Linux.txt ../Muzyka - przenieś plik Linux.txt do katalogu Muzyka (poziom wyżej)
+mv Linux.txt ../ - przenieś plik poziom wyżej
+mv Linux txt Pulpit/ - przenieś plik z ogólnego katalogu do bardziej szczegółowego - Pulpit
+
+cp - analogiczna do komendy mv tylko kopiuje i wkleja, jako argumenty podobne wartości 
+
+cp Linux.txt ../Muzyka - kopiuje i wkleja do folderu myzyka 
+
+rm Linux.txt - usuwa plik Linux.txt
+rmdir Pulpit - usuwa ścieżke Pulpit 
+rm -i Linux.txt - pyta czy usunąć najpierw a potem w zależności od odpowiedzi usuwa albo nie 
+
+mkdir test - tworzenie katalogu test
+mkdir -v Testt - tworzenie katalogu jeśli nie istnieje 
+mkdir D1 D2 D3 - tworzenie kilku katalogów: D1 D2 D3 
+
+touch pliktest - tworzy plik o nazwie pliktest
+w przypadku ls -l wynik:
+
+cat Linux.txt - pokaz zawartość pliku Linux.txt
+cat -b Linux.txt - pokaz zawartość pliku Linux.txt z licznikiem linijek
+cat Linux.txt testplik > plikzlaczony - złączone plik Linux.txt z testplik są kierowane do nowoutworzonego pliku plikzlaczony 
+cat Linux.txt testplik >> plikzlaczony - dopisywanie o ile nie istnieje 
+
+more Linux.txt - przeglądanie pliku, contentu
+more -10 Linux.txt - rozpoczęcie od 10 linijek i przeglądanie po enterze	
+head Linux.txt - wyświetlenie pierwszych 10 linijek 
+head -h Linux.txt - wyświetlenie nazwy plików i pierwszych 10 linijek
+head -n 5 Linux.txt - wyświetlenie pierwszych 5 linijek
+head -n -5 Linux.txt - wyświetlenie wszystkich za wyjątkiem 5 ostatnich linijek
+head -c 100 Linux.txt - wyświetla pierwsze 100 bajtów
+
+tail Linux.txt - wyświetla 10 ostatnich linijek pliku Linux.txt
+tail 	Linux.txt - wyświetla 10 ostatnich linijek pliku Linux.txt i nazwe
+tail -n 14 Linux.txt - Wyświetla ostatnie 14 linijek 
+tail -n -100 Linux.txt - wyświetla od wiersza 100
+tail -c 100 Linux.txt  - wyświetla 100 ostatnich bajtów
+
+
+
+
+find -name Linux.txt - zwraca sciezke do pliku. Znajduje go
+find -name Lin* - zwraca wszelkie wyszukane pliki zaczynające się na Lin
+find -name Lin?x.txt - zwraca wartości, gdzie znak ? zastępuje dowolnym innym np Linex, Linix itp.
+find -name *inu* - zwraca wyszukanie, gdzie w środku jest inu
+? - 1 znak
+* - ciąg znaków 
+
+grep [[:upper:]] Linux.txt - zwraca  linijki, gdzie występuje wielka litera z pliku Linux.txt
+grep [[:lower:]] Linux.txt - zwraca  linijki, gdzie występuje mała litera z pliku Linux.txt
+grep [[:punct:]] Linux.txt -zwraca  linijki, gdzie występują znaki interpunkcyjne z pliku Linux.txt
+
+drwxr-xr-x 2 maciejburzynski maciejburzynski 4096 lis  3 23:45 Wideo
+
+prawa właściciela - prawa grupy - prawa reszty użytkowników
+r - odczyt 
+w - zapisu
+x - uruchamiania 
+
+chmod u - zmiana uprawnien dla właściciela pliku
+chmod g - zmiana dla grupy
+chmod o - zmiana dla reszty
+
+chmod o-w Linux.txt - odejmownie uprawnień w (zapisu) dla o (reszty użytkowników)
+chmod o+w Linux.txt - dodawanie uprawnień w (zapisu) dla o (reszty użytkowników)
+
+sudo chown test Linux.txt - zmiana właściciela pliku Linux.txt na użytownika test 
+sudo chown :adm Linux.txt - zmiana grupy na adm (bez:) 
+sudo chown maciejburzynski:maciejburzynski Linux.txt - jednoczesna zmiana grupy i właściciela 
+
+ifconfig - wyświetla dostępne interfejsy sieciowe
+sudo ifconfig wlp2s0 down - wyłączenie interfejsu sieciowego wlp2s0
+sudo ifconfig wlp2s0 up - włączenie interfejsu sieciowego wlp2s0
+sudo ifconfig wlp2s0 10.11.27.69 - zmiana adresu IP dla interfejsu wlp2s0
+sudo ifconfig wlp2s0 netmask 255.255.255.0 - ustawia maske na 255.255.255.0 dla interfejsu wlp2s0
+sudo ifconfig wlp2s0 10.11.27.69 netmask 255.255.248.0 - zmiana jednoczesnego IP i maski 
+
+route - bramki 
+sudo route add default gw IPADRES -ustawia domyślną bramke 
+sudo route add default gw IPADRES - usuwa bramke
+sudo route add -host IPADRES reject - "omija" daną bramke 
+
+netstat
+netstat -a|more - wyświetlenie statystyki portów (po enterze można przejrzeć dzięki |more)
+netstat -at - porty tcp 
+netstat -au - porty udp
+netstat -ap |grep firefox - porty zajęte z wyszukiwanie gdzie pracuje obecnie przeglądarka (grep - wyszukiwanie)
+
+ping helion.pl - wysłanie zapytanie do strony helion.pl, bieżące statystyki z czasem odpowiedzi (ctr + c - przerwanie)
+
+ping helion.pl -c 1 - tylko jednokrotne - nie ciągłe
+ping helion.pl -i 4 - zapytanie co 4 sekundy
+
+sudo apt update && sudo apt upgrade -y  - update ubuntu
+
+vi edytor 
+vi plik - utworzenie pliku plik jesli nie istnieje, a jeśli jest - otwarcie go
+Występują 2 tryby - komend i edycji 
+Kiedy otworzymy plik - jesteśmy w trybie komend 
+aby przejść do trybu edycji należy kliknąć i. Aby przejść spowrotem należy kliknąć escp - wtedy można wcisnąć q:! - aby wyjść totalnie z VI bez zapisywania, :w  spis zmian bez wychodzenia z edytora, ZZ lub :x - wyjście z edytora z zapisaniem dokonanych zmian. 
+
+
