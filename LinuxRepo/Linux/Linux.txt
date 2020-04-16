@@ -173,5 +173,29 @@ vi plik - utworzenie pliku plik jesli nie istnieje, a jeśli jest - otwarcie go
 Występują 2 tryby - komend i edycji 
 Kiedy otworzymy plik - jesteśmy w trybie komend 
 aby przejść do trybu edycji należy kliknąć i. Aby przejść spowrotem należy kliknąć escp - wtedy można wcisnąć q:! - aby wyjść totalnie z VI bez zapisywania, :w  spis zmian bez wychodzenia z edytora, ZZ lub :x - wyjście z edytora z zapisaniem dokonanych zmian. 
+--------------------------------
 
+Joe Collins Guide:
+https://www.youtube.com/watch?v=oxuRxtrO2Ag
 
+file Linux.txt - zwraca informacje o pliku, nieważne czy to txt, jpg 
+locate Linux - znajdowanie ścieżek, gdzie znajdują się słowa Linux (gdziekolwiek, na początku, w środku, czy na końcu). W przypadku Maca - komenda mdfind
+Which cal - znajdowanie wykonywalnego pliku 
+pushd Downloads - idzie do Downloads
+popd - wraca do poprzedniego katalogu 
+whatis cal - zwraca info co to jest
+apropos mac - zwraca komendy, których opis jest z Maciem
+rm * - czyści całą ścieżke z plików
+rm file* - czyści wszystko, co zaczyna się na file
+rm -r * - czyści z plików i folderów 
+cat >> file - umożliwia dodanie tekstu do file, wyjście - ctrl + d 
+cat > file - tworzy nowy file i daje możliwość wpisania teksu
+cat file file1 - dodanie file1 do file
+ls -l > costam.txt - to wyświetla nam się przy ls -l idzie do nowego pliku costam.txt
+sudo -s - root privilages na dłuższy czas
+su - sylwiazduniak - przejście na konto Sylwii 
+exit - wyjscie z czyjegoś profilu 
+su sylwiazduniak - uprawnienia Sylwii, ale konto na którym byłeś
+users - zwraca zalogowanych userów
+id - zwraca jakieś info
+chmod 777 file - nadaj uprawnienie rwxrwxrwx dla pliku file 
