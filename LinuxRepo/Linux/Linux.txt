@@ -1,66 +1,11 @@
-Powłoka - pośrednik między jądrem, a użytkownikiem
+Powłoka - pośrednik między jądrem linuxa, a użytkownikiem
 
-Polecenia: 
-- rozpoznają wielkość liter
+Polecenia rozpoznają wielkość liter
 
+- PODSTAWOWE POLECENIA -
 -man - otwiera podręcznik pomocniczy
 man man - można podać jako argument poszukiwaną frazę - w tym przypadku podręcznik otwrzy info o samym sobie
 
-sudo - uprawnienia adminowe - przed komendami "tymczasowe", na czas trwania 
-sudo su - uprawnienia adminowe - "długotrwałe"
-
-shutdown -h now - zamyka system w trybie natychmiastowym. W tym przypadku należy poprzednić sudo, jako uprawnienia administratorskie
-shutdown -h +1 - zamyka system za minutę
-ctrl + c - przerywa proces zamykania 
-shutdown -r - reboot
-
-halt - zamyka system bez pytania o zgodę, bez brania niczego pod uwagę. Shutdown robi delikatniej
-
-top - Wyświetlanie procesów - PID - process idenyfikator, wyjście z programu kliknięcie q, user - użytkownik uruchamiający proces, command - nazwa poszczególnych procesów, służy do sprawdzenie użycia procesora 
-
-ps - procesu uruchomione przez osobe zalogowaną
-ps -aux - wszystkie procesy 
-ps -u - okrojone rozszerzenie 
-ps --forest - hierarchia uruchmionych procesów
-
-kill 2122 - zabija proces o numerze PID 2122
-kill -9 2122 - zabija proces bezwzględnie o numerze PID 2122
- 
-
-date - pokazuje bieżącą datę
-date +%H - pokazuje bieżącą godzinę z godziny format 24H
-date +%I - pokazuje bieżącą godzinę z godziny format 12H
-date +%I+%M - pokazuje godzine w formacie 12H + minuty
-
-sudo adduser gosc - dodaje uzytkownika o nazwie gosc
-sudo deluser gosc --remove-home - usuwa uzytkownika łącznie z plikami 
-
-sudo addgroup domownicy - dodaje grupe o nazwie domownicy 
-sudo delgroup domownicy - usuwa grupe o nazwie domownicy 
-sudo delgroup -only-if-empty domownicy - usuwa grupe o nazwie domownicy jesli jest pusta
-
-who - sprawdza kto jest zalogowany 
-
-mesg - sprawdza czy funkcja wiadomosci jest włączona
-mesg y - ustawia mesg na włączone
-mesg n - ustawia mesg na wyłączone
-
-passwd - zmiana hasla zalogowanego usera
-sudo passwd test - zmiana hasla dla konta test 
-sudo passwd test -e - zmiana hasla dla konta test przy najblizszym logowaniu uzytkownika
-finger maciej - sprawdza dane użytkownika maciej
-
-echo "chuj" | wall - wysyla zbiorowy komunikat o treści: chuj - co wazne mesg muszą być włączone
-
-su maciej - praca na uzytkowniku maciej bez logowania go
-sudo login maciej - logowanie sie na uzytkowniku maciej 
-
-alias czas='date' - korzystanie z komendy czas zamiast komendy date - przypisanie jej
-unalias -a - usuwanie aliasow - resetowanie ich 	
-exit - wyjscie z konta/wylogowanie
-df - info na temat używalności dysku 
-df -h - bardziej czytelna forma
-df -T - bardziej czytelna forma z typem danych
 
 ls - pokazywanie zawartosci katalogu 
 ls - a - pokazywanie tez tych ukrytych katalogów
@@ -89,8 +34,28 @@ mkdir test - tworzenie katalogu test
 mkdir -v Testt - tworzenie katalogu jeśli nie istnieje 
 mkdir D1 D2 D3 - tworzenie kilku katalogów: D1 D2 D3 
 
-touch pliktest - tworzy plik o nazwie pliktest
-w przypadku ls -l wynik:
+file Linux.txt - zwraca informacje o pliku, nieważne czy to txt, jpg 
+locate Linux - znajdowanie ścieżek, gdzie znajdują się słowa Linux (gdziekolwiek, na początku, w środku, czy na końcu). W przypadku Maca - komenda mdfind
+Which cal - znajdowanie wykonywalnego pliku 
+pushd Downloads - idzie do Downloads
+popd - wraca do poprzedniego katalogu 
+whatis cal - zwraca info co to jest
+apropos mac - zwraca komendy, których opis jest z Maciem
+rm * - czyści całą ścieżke z plików
+rm file* - czyści wszystko, co zaczyna się na file
+rm -r * - czyści z plików i folderów 
+cat >> file - umożliwia dodanie tekstu do file, wyjście - ctrl + d 
+cat > file - tworzy nowy file i daje możliwość wpisania teksu
+cat file file1 - dodanie file1 do file
+ls -l > costam.txt - to wyświetla nam się przy ls -l idzie do nowego pliku costam.txt
+sudo -s - root privilages na dłuższy czas
+su - sylwiazduniak - przejście na konto Sylwii 
+exit - wyjscie z czyjegoś profilu 
+su sylwiazduniak - uprawnienia Sylwii, ale konto na którym byłeś
+users - zwraca zalogowanych userów
+id - zwraca jakieś info
+chmod 777 file - nadaj uprawnienie rwxrwxrwx dla pliku file 
+
 
 cat Linux.txt - pokaz zawartość pliku Linux.txt
 cat -b Linux.txt - pokaz zawartość pliku Linux.txt z licznikiem linijek
@@ -112,8 +77,6 @@ tail -n -100 Linux.txt - wyświetla od wiersza 100
 tail -c 100 Linux.txt  - wyświetla 100 ostatnich bajtów
 
 
-
-
 find -name Linux.txt - zwraca sciezke do pliku. Znajduje go
 find -name Lin* - zwraca wszelkie wyszukane pliki zaczynające się na Lin
 find -name Lin?x.txt - zwraca wartości, gdzie znak ? zastępuje dowolnym innym np Linex, Linix itp.
@@ -125,7 +88,42 @@ grep [[:upper:]] Linux.txt - zwraca  linijki, gdzie występuje wielka litera z p
 grep [[:lower:]] Linux.txt - zwraca  linijki, gdzie występuje mała litera z pliku Linux.txt
 grep [[:punct:]] Linux.txt -zwraca  linijki, gdzie występują znaki interpunkcyjne z pliku Linux.txt
 
-drwxr-xr-x 2 maciejburzynski maciejburzynski 4096 lis  3 23:45 Wideo
+
+- PROCESY -
+ps - procesu uruchomione przez osobe zalogowaną
+ps -aux - wszystkie procesy 
+ps -u - okrojone rozszerzenie 
+ps --forest - hierarchia uruchmionych procesów
+
+kill 2122 - zabija proces o numerze PID 2122
+kill -9 2122 - zabija proces bezwzględnie o numerze PID 2122
+
+- UŻYTKOWNICY -
+sudo - uprawnienia adminowe - przed komendami "tymczasowe", na czas trwania 
+sudo su - uprawnienia adminowe - "długotrwałe"
+
+sudo adduser gosc - dodaje uzytkownika o nazwie gosc
+sudo deluser gosc --remove-home - usuwa uzytkownika łącznie z plikami 
+
+sudo addgroup domownicy - dodaje grupe o nazwie domownicy 
+sudo delgroup domownicy - usuwa grupe o nazwie domownicy 
+sudo delgroup -only-if-empty domownicy - usuwa grupe o nazwie domownicy jesli jest pusta
+
+who - sprawdza kto jest zalogowany 
+
+mesg - sprawdza czy funkcja wiadomosci jest włączona
+mesg y - ustawia mesg na włączone
+mesg n - ustawia mesg na wyłączone
+
+passwd - zmiana hasla zalogowanego usera
+sudo passwd test - zmiana hasla dla konta test 
+sudo passwd test -e - zmiana hasla dla konta test przy najblizszym logowaniu uzytkownika
+finger maciej - sprawdza dane użytkownika maciej
+
+echo "dupa" | wall - wysyla zbiorowy komunikat o treści: dupa - co ważne mesg muszą być włączone
+
+su maciej - praca na uzytkowniku maciej bez logowania go
+sudo login maciej - logowanie sie na uzytkowniku maciej 
 
 prawa właściciela - prawa grupy - prawa reszty użytkowników
 r - odczyt 
@@ -143,7 +141,6 @@ sudo chown test Linux.txt - zmiana właściciela pliku Linux.txt na użytownika 
 sudo chown :adm Linux.txt - zmiana grupy na adm (bez:) 
 sudo chown maciejburzynski:maciejburzynski Linux.txt - jednoczesna zmiana grupy i właściciela 
 
-ifconfig - wyświetla dostępne interfejsy sieciowe
 sudo ifconfig wlp2s0 down - wyłączenie interfejsu sieciowego wlp2s0
 sudo ifconfig wlp2s0 up - włączenie interfejsu sieciowego wlp2s0
 sudo ifconfig wlp2s0 10.11.27.69 - zmiana adresu IP dla interfejsu wlp2s0
@@ -155,6 +152,32 @@ sudo route add default gw IPADRES -ustawia domyślną bramke
 sudo route add default gw IPADRES - usuwa bramke
 sudo route add -host IPADRES reject - "omija" daną bramke 
 
+
+
+- SYSTEM -
+exit - wyjscie z konta/wylogowanie
+df - info na temat używalności dysku 
+df -h - bardziej czytelna forma
+df -T - bardziej czytelna forma z typem danych
+
+
+shutdown -h now - zamyka system w trybie natychmiastowym. W tym przypadku należy poprzednić sudo, jako uprawnienia administratorskie
+shutdown -h +1 - zamyka system za minutę
+ctrl + c - przerywa proces zamykania 
+shutdown -r - reboot
+
+halt - zamyka system bez pytania o zgodę, bez brania niczego pod uwagę. Shutdown robi delikatniej
+
+top - Wyświetlanie procesów - PID - process idenyfikator, wyjście z programu kliknięcie q, user - użytkownik uruchamiający proces, command - nazwa poszczególnych procesów, służy do sprawdzenie użycia procesora 
+ifconfig - wyświetla dostępne interfejsy sieciowe
+
+- ALIAS -
+alias czas='date' - korzystanie z komendy czas zamiast komendy date - przypisanie jej
+unalias -a - usuwanie aliasow - resetowanie ich 	
+
+touch pliktest - tworzy plik o nazwie pliktest
+w przypadku ls -l wynik:
+drwxr-xr-x 2 maciejburzynski maciejburzynski 4096 lis  3 23:45 Wideo
 netstat
 netstat -a|more - wyświetlenie statystyki portów (po enterze można przejrzeć dzięki |more)
 netstat -at - porty tcp 
@@ -178,24 +201,9 @@ aby przejść do trybu edycji należy kliknąć i. Aby przejść spowrotem nale�
 Joe Collins Guide:
 https://www.youtube.com/watch?v=oxuRxtrO2Ag
 
-file Linux.txt - zwraca informacje o pliku, nieważne czy to txt, jpg 
-locate Linux - znajdowanie ścieżek, gdzie znajdują się słowa Linux (gdziekolwiek, na początku, w środku, czy na końcu). W przypadku Maca - komenda mdfind
-Which cal - znajdowanie wykonywalnego pliku 
-pushd Downloads - idzie do Downloads
-popd - wraca do poprzedniego katalogu 
-whatis cal - zwraca info co to jest
-apropos mac - zwraca komendy, których opis jest z Maciem
-rm * - czyści całą ścieżke z plików
-rm file* - czyści wszystko, co zaczyna się na file
-rm -r * - czyści z plików i folderów 
-cat >> file - umożliwia dodanie tekstu do file, wyjście - ctrl + d 
-cat > file - tworzy nowy file i daje możliwość wpisania teksu
-cat file file1 - dodanie file1 do file
-ls -l > costam.txt - to wyświetla nam się przy ls -l idzie do nowego pliku costam.txt
-sudo -s - root privilages na dłuższy czas
-su - sylwiazduniak - przejście na konto Sylwii 
-exit - wyjscie z czyjegoś profilu 
-su sylwiazduniak - uprawnienia Sylwii, ale konto na którym byłeś
-users - zwraca zalogowanych userów
-id - zwraca jakieś info
-chmod 777 file - nadaj uprawnienie rwxrwxrwx dla pliku file 
+
+
+date - pokazuje bieżącą datę
+date +%H - pokazuje bieżącą godzinę z godziny format 24H
+date +%I - pokazuje bieżącą godzinę z godziny format 12H
+date +%I+%M - pokazuje godzine w formacie 12H + minuty
